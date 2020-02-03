@@ -1,6 +1,7 @@
 <?php
     require_once '../load.php';
 
+    // get ip of user
     $ip = $_SERVER['REMOTE_ADDR'];
 
     if(isset($_POST['submit'])){
@@ -9,7 +10,7 @@
 
         if(!empty($username) && !empty($password)){
             // log user in
-            $message = login($username, $password);
+            $message = login($username, $password, $ip);
         }else{
             $message = 'Please fill out the rquired field';
         }
