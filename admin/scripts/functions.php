@@ -6,3 +6,4 @@ function redirect_to($location){
         exit;
     }
 }
+

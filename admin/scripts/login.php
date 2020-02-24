@@ -30,9 +30,15 @@ function login($username, $password, $ip){
          $id = $found_user['user_id'];
          //logged in
 
+        $message = 'You just logged in';
+
+        //specify info to be kept in the locker aka Session
+        $_SESSION['user_id'] = $id;
+        $_SESSION['user_name'] = $found_user['user_fname'];
+
          //Todo: finish the following lines so that when user logged in
          // the user_ip column get updated by the $ip
-         $message = 'You just logged in';
+
          $update_query = 'UPDATE tbl_user SET user_ip = :ip WHERE user_id= :id';
          $update_set = $pdo->prepare($update_query);
          $update_set->execute(
@@ -53,4 +59,17 @@ function login($username, $password, $ip){
         $message = 'User does not exist';
 }
 return $message;
+}
+
+function confirm_logged_in(){
+    if(!isset($_SESSION['user_id'])){
+        redirect_to('admin_login.php');
+    }
+}
+
+
+// destroy session
+function logout(){
+    session_destroy();
+    redirect_to('admin_login.php');
 }
