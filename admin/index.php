@@ -13,8 +13,10 @@
 <body>
     <h2>Welcome! <?php echo $_SESSION['user_name'];?></h2>
 
-    <a href="admin_createuser.php">Add User</a>
+    <a href="admin_createuser.php">Add User</a><br>
+    <a href="admin_edituser.php">Edit User</a>
     <a href="admin_logout.php">Log Out</a>
+    <a href="admin_deleteuser.php">Delete User</a>
 
 </body>
 </html>
